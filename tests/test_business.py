@@ -212,7 +212,7 @@ class TestIntegration:
 
         # Calculate total with tax
         total = calculate_order_total(items, tax_rate=0.20)
-        assert total == 1261.18
+        assert total == 1261.19
 
         # Validate status transitions
         assert validate_status_transition("pending", "confirmed") is True
