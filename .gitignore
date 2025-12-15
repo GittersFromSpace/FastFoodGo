@@ -124,6 +124,7 @@ dmypy.json
 
 # IDE
 .vscode/
+!.vscode/*.example
 .idea/
 *.swp
 *.swo
