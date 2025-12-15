@@ -124,48 +124,48 @@ class TestValidateStatusTransition:
 
     def test_valid_pending_to_confirmed(self):
         """Test valid transition from pending to confirmed."""
-        assert validate_status_transition("pending", "confirmed") is True
+        assert validate_status_transition("pending", "confirmed")
 
     def test_valid_pending_to_cancelled(self):
         """Test valid transition from pending to cancelled."""
-        assert validate_status_transition("pending", "cancelled") is True
+        assert validate_status_transition("pending", "cancelled")
 
     def test_valid_confirmed_to_processing(self):
         """Test valid transition from confirmed to processing."""
-        assert validate_status_transition("confirmed", "processing") is True
+        assert validate_status_transition("confirmed", "processing")
 
     def test_valid_processing_to_shipped(self):
         """Test valid transition from processing to shipped."""
-        assert validate_status_transition("processing", "shipped") is True
+        assert validate_status_transition("processing", "shipped")
 
     def test_valid_shipped_to_delivered(self):
         """Test valid transition from shipped to delivered."""
-        assert validate_status_transition("shipped", "delivered") is True
+        assert validate_status_transition("shipped", "delivered")
 
     def test_invalid_pending_to_processing(self):
         """Test invalid transition from pending to processing."""
-        assert validate_status_transition("pending", "processing") is False
+        assert not validate_status_transition("pending", "processing")
 
     def test_invalid_confirmed_to_shipped(self):
         """Test invalid transition from confirmed to shipped."""
-        assert validate_status_transition("confirmed", "shipped") is False
+        assert not validate_status_transition("confirmed", "shipped")
 
     def test_invalid_delivered_to_any(self):
         """Test that delivered status cannot transition to any status."""
-        assert validate_status_transition("delivered", "pending") is False
-        assert validate_status_transition("delivered", "confirmed") is False
-        assert validate_status_transition("delivered", "cancelled") is False
+        assert not validate_status_transition("delivered", "pending")
+        assert not validate_status_transition("delivered", "confirmed")
+        assert not validate_status_transition("delivered", "cancelled")
 
     def test_invalid_cancelled_to_any(self):
         """Test that cancelled status cannot transition to any status."""
-        assert validate_status_transition("cancelled", "pending") is False
-        assert validate_status_transition("cancelled", "confirmed") is False
+        assert not validate_status_transition("cancelled", "pending")
+        assert not validate_status_transition("cancelled", "confirmed")
 
     def test_case_insensitive(self):
         """Test that status comparison is case-insensitive."""
-        assert validate_status_transition("PENDING", "CONFIRMED") is True
-        assert validate_status_transition("Pending", "Confirmed") is True
-        assert validate_status_transition("PeNdInG", "cOnFiRmEd") is True
+        assert validate_status_transition("PENDING", "CONFIRMED")
+        assert validate_status_transition("Pending", "Confirmed")
+        assert validate_status_transition("PeNdInG", "cOnFiRmEd")
 
     def test_invalid_current_status(self):
         """Test that invalid current status raises ValueError."""
@@ -189,14 +189,14 @@ class TestValidateStatusTransition:
 
     def test_same_status_transition(self):
         """Test transition from a status to itself."""
-        assert validate_status_transition("pending", "pending") is False
-        assert validate_status_transition("confirmed", "confirmed") is False
+        assert not validate_status_transition("pending", "pending")
+        assert not validate_status_transition("confirmed", "confirmed")
 
     def test_all_valid_transitions(self):
         """Test all valid transitions defined in VALID_TRANSITIONS."""
         for current, valid_nexts in VALID_TRANSITIONS.items():
             for next_status in valid_nexts:
-                assert validate_status_transition(current, next_status) is True
+                assert validate_status_transition(current, next_status)
 
 
 class TestIntegration:
@@ -215,7 +215,7 @@ class TestIntegration:
         assert total == 1261.19
 
         # Validate status transitions
-        assert validate_status_transition("pending", "confirmed") is True
-        assert validate_status_transition("confirmed", "processing") is True
-        assert validate_status_transition("processing", "shipped") is True
-        assert validate_status_transition("shipped", "delivered") is True
+        assert validate_status_transition("pending", "confirmed")
+        assert validate_status_transition("confirmed", "processing")
+        assert validate_status_transition("processing", "shipped")
+        assert validate_status_transition("shipped", "delivered")
