@@ -56,13 +56,19 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-3. Install the package in development mode with dev dependencies:
+3. Install dependencies:
+
+**Option A: Using pyproject.toml (recommended)**
 ```bash
 pip install -e ".[dev]"
 ```
 
-This will install:
-- The project package in editable mode
+**Option B: Using requirements.txt**
+```bash
+pip install -r requirements.txt
+```
+
+Both methods will install:
 - pytest for testing
 - pytest-cov for code coverage
 
