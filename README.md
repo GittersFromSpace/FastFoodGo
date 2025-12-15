@@ -1,3 +1,11 @@
+# Architecture
+
+## System Overview
+
+![Architecture Diagram](./assets/architecture.jpeg)
+
+The system follows a modular architecture with clear separation of concerns between business logic, testing, and deployment infrastructure.
+
 # Order Management System
 
 ![CI Status](https://github.com/yourusername/order-management/actions/workflows/ci.yml/badge.svg)
@@ -284,7 +292,10 @@ This project is for educational purposes.
 
 ## Authors
 
-- Your Name
+- @geap1999
+- @matinebdi
+- @SAIDI-NASSIM 
+- @Lotjinn
 
 ## Acknowledgments
 
