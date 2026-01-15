@@ -175,5 +175,5 @@ def test_validate_transition_missing_field(client):
 
 def test_swagger_docs_accessible(client):
     """Test that Swagger documentation is accessible."""
-    response = client.get('/api/docs')
+    response = client.get('/docs')
     assert response.status_code == 200
